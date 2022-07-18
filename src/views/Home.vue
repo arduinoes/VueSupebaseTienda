@@ -1,17 +1,22 @@
 <script setup lang="ts">
+// vue
 import { computed } from "vue";
-import Auth from "@/components/Auth.vue";
+// componentes
 import PasswordReset from "@/components/PasswordReset.vue";
-import ProductCard from "../components/ProductCard.vue";
+import Auth from "@/components/Auth.vue";
 import ProductCardSkeleton from "../components/ProductCardSkeleton.vue";
+import ProductCard from "../components/ProductCard.vue";
+// supabase
 import { getParameterByName } from "@/lib/helpers";
-import { almacenAuth } from "@/stores/user";
 import { userSession } from "@/lib/useAuth";
+// almacenes
+import { almacenAuth } from "@/stores/user";
 import { almacenProductos } from "../stores/products";
 
 const deProductos = almacenProductos();
 const user = almacenAuth();
 
+// Se mostrará en el caso de que necesitemos recuperar/actualizar la contraseña
 const showPasswordReset = computed(() => {
   const requestType = getParameterByName("type", location.href);
   return requestType === "recovery";
@@ -45,9 +50,10 @@ const products = computed(() => deProductos.list);
         :key="product.id"
         :product="product"
       />
-    </div>
-    <button class="btn-black w-full mt-12" @click="user.handleLogout">
-      Logout
-    </button>
+    </div >
+    <div class="flex justify-center">
+    <button class="input input-bordered input-accent bg-white w-full max-w-xl" @click="user.handleLogout">
+      Salir
+    </button></div>
   </div>
 </template>

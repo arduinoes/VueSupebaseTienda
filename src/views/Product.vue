@@ -1,11 +1,17 @@
 <script setup lang="ts">
+// vue
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+// utilidades
+import { toCurrency } from '../shared/utils';
+// componentes
+import CartCardSkeleton from '../components/CartCardSkeleton.vue';
+// almacenes
 import { almacenCart } from '../stores/cart';
 import { almacenProductos } from '../stores/products';
-import { toCurrency } from '../shared/utils';
+// interfaces
 import type { Product } from '../stores/form'
-import CartCardSkeleton from '../components/CartCardSkeleton.vue';
+// rutas
+import { useRoute } from 'vue-router';
 
 const cartStore = almacenCart();
 const productStore = almacenProductos();

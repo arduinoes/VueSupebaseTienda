@@ -1,20 +1,24 @@
 <script setup lang="ts">
+// vue
 import { computed } from "vue";
-import CartCard from "../components/CartCard.vue";
-import CartCardSkeleton from "../components/CartCardSkeleton.vue";
+// utilidades
 import { toCurrency } from "../shared/utils";
+// componentes
+import CartCardSkeleton from "../components/CartCardSkeleton.vue";
+import CartCard from "../components/CartCard.vue";
+// almacenes
 import { almacenCart } from "../stores/cart";
 import { almacenProductos } from "../stores/products";
 
 const cart = almacenCart();
-const productStore = almacenProductos();
+const deProductos = almacenProductos();
 
 const formattedCart = computed(() => cart.formattedCart);
 </script>
 
 <template>
   <div class="p-4 max-w-4xl mx-auto">
-    <div v-if="!productStore.loaded" class="space-y-4">
+    <div v-if="!deProductos.loaded" class="space-y-4">
       <CartCardSkeleton v-for="n in 15" :key="n" />
     </div>
     <div v-else-if="!formattedCart.length">

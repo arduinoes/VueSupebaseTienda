@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import BaseInput from "../components/formulario/BaseInput.vue";
+// vue
 import { onMounted } from "vue";
+// componentes
+import BaseInput from "../components/formulario/BaseInput.vue";
+// almacenes
 import { almacenForm } from "../stores/form";
 
 const form = almacenForm();
@@ -17,7 +20,7 @@ onMounted(() => {
         <img
           v-if="form.src"
           :src="form.src"
-          class="avatar"
+          class="avatar rounded mb-2"
           :style="{ height: form.size, width: form.size }"
         />
         <div
@@ -29,7 +32,7 @@ onMounted(() => {
           <!-- ////////// Boton guardar ////////// -->
           <label
             v-if="form.editar === false"
-            class="flex content-center btn btn-accent"
+            class="flex content-center btn btn-wide btn-accent"
             for="single"
           >
             {{ form.uploading ? "Guardando ..." : "Guardar" }}

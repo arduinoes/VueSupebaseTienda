@@ -9,64 +9,71 @@ const password = ref('')
 </script>
 
 <template>
-  <main class="w-full sm:w-1/2 xl:w-1/3">
+  <main class="w-full flex justify-center sm:w-1/2 xl:w-1/3">
     <div class="border-teal p-8 border-t-12 mb-6 rounded-lg shadow-lg bg-white">
-      <div class="mb-4">
+      <div class="form-control w-full max-w-xl">
         <label class="font-bold text-grey-darker block mb-2">Email</label>
+     
         <input
           type="text"
-          class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-          placeholder="Your email"
+          class="input input-bordered input-accent flex justify-center w-full max-w-xl"
+          placeholder="Tú correo"
           v-model="email"
         />
       </div>
-      <div class="mb-4">
-        <label class="font-bold text-grey-darker block mb-2">Password</label>
+      <div class="form-control bg-white w-full max-w-xl">
+        <label class="font-bold text-grey-darker block mb-2">Contraseña</label>
         <input
           type="password"
-          class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-          placeholder="Your password"
+          class="input input-bordered input-accent bg-white w-full max-w-xl"
+          placeholder="Tú contraseña"
           v-model="password"
         />
       </div>
-
+<!-- ////////// Botón Registrarse, envía un email de validación  ////////// -->
       <div class="flex flex-col gap-2">
-        <a @click="user.handleSignup({ email, password })" href="#" class="btn-black" tabindex="0">
-          Sign up
+        <a @click="user.handleSignup({ email, password })" 
+        href="#" 
+        class="btn btn-sm btn-secondary btn-wide max-w-xl mt-4"
+        tabindex="0">
+          Regístrate
         </a>
-        <a @click="user.handleLogin({ email, password })" href="#" class="btn-black-outline">
-          <span v-if="password.length">Sign in</span>
-          <span v-else> Send magic link </span>
+<!-- ////////// Botón Iniciar Sesión (Loguearse) ////////// -->
+        <a @click="user.handleLogin({ email, password })" 
+        href="#" 
+        class="btn btn-sm btn-accent text-white btn-wide max-w-xs mt-1"
+        >
+          <span v-if="password.length">Entrar</span>
+          <span v-else> Enviar enlace mágico </span>
         </a>
       </div>
-
+<!-- ////////// Botón Recuperar/Actualizar Contraseña ////////// -->
       <div class="mt-2 text-sm leading-5">
         <a
           @click.prevent="user.handlePasswordReset"
           href="/"
           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
         >
-          Forgot your password?
+          ¿Olvidaste la contraseña?
         </a>
       </div>
-
       <div class="mt-4">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
             <div class="w-full border-t border-gray-300"></div>
           </div>
           <div class="relative flex justify-center text-sm leading-5">
-            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+            <span class="px-2 bg-white text-gray-500">O continúa con</span>
           </div>
         </div>
-
+   <!-- ////////// Registro con terceros, Github, Google... ////////// -->
         <div class="mt-6">
           <div class="mt-6">
             <span class="block w-full rounded-md shadow-sm">
               <button
                 @click="user.handleOAuthLogin('github')"
                 type="button"
-                class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                class="btn btn-active btn-wide max-w-xs"
               >
                 GitHub
               </button>
@@ -77,7 +84,7 @@ const password = ref('')
               <button
                 @click="user.handleOAuthLogin('google')"
                 type="button"
-                class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                class="btn btn-outline btn-wide max-w-xs"
               >
                 Google
               </button>

@@ -27,7 +27,7 @@ export const almacenForm = defineStore({
   id: "form",
   state: (): TiposEstado => ({
     productos: [],
-    size: "10em",
+    size: "16em",
     uploading: false,
     loading: false,
     src: "",

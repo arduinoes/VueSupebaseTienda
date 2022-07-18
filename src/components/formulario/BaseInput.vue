@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <div class="mb-3">
+    <div class="mb-2">
       <label class="label">{{ label }}</label>
       <input
         type="text"
-        class="input input-bordered input-accent w-full max-w-xs"
+        class="input input-bordered input-accent w-full max-w-md"
         :placeholder="label"
         :value="modelValue"
         @input="$emit('update:modelValue', ($event.target as any).value)"
